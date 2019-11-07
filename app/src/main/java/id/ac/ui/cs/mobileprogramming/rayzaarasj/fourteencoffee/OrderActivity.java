@@ -12,10 +12,10 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.order_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, OrderFragment.newInstance())
+                    .replace(R.id.order_container, OrderFragment.newInstance())
                     .commitNow();
         }
     }

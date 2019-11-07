@@ -14,7 +14,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, HomeFragment.newInstance())
+                    .replace(R.id.home_container, HomeFragment.newInstance())
                     .commitNow();
         }
     }

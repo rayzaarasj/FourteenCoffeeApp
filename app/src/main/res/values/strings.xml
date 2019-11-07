@@ -3,7 +3,7 @@
     <string name="number_app_name">14 Coffee</string>
     <string name="order">order</string>
     <string name="history">history</string>
-    <string name="address">address</string>
+    <string name="address">Address</string>
     <string name="checkout">checkout</string>
     <string name="add_address">add address</string>
 </resources>
