@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FourteenCoffeeApp</string>
+    <string name="number_app_name">14 Coffee</string>
+    <string name="order">order</string>
+    <string name="history">history</string>
+    <string name="address">address</string>
+</resources>
