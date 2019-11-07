@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.AddressActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HomeActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.OrderActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
@@ -38,6 +39,16 @@ public class HomeFragment extends Fragment {
                 Intent orderIntent = new Intent(getActivity(), OrderActivity.class);
                 getActivity().finish();
                 startActivity(orderIntent);
+            }
+        });
+
+        Button addressButton = getView().findViewById(R.id.address_button);
+        addressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addressIntent = new Intent(getActivity(), AddressActivity.class);
+                getActivity().finish();
+                startActivity(addressIntent);
             }
         });
     }
