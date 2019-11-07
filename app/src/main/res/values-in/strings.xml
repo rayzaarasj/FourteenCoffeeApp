@@ -5,4 +5,5 @@
     <string name="order">pesan</string>
     <string name="history">riwayat</string>
     <string name="address">alamat</string>
+    <string name="checkout">checkout</string>
 </resources>
