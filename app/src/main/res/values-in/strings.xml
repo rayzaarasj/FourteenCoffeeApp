@@ -6,4 +6,5 @@
     <string name="history">riwayat</string>
     <string name="address">alamat</string>
     <string name="checkout">bayar</string>
+    <string name="add_address">tambah alamat</string>
 </resources>

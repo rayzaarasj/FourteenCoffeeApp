@@ -5,4 +5,5 @@
     <string name="history">history</string>
     <string name="address">address</string>
     <string name="checkout">checkout</string>
+    <string name="add_address">add address</string>
 </resources>
