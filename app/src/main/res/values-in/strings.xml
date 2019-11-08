@@ -2,13 +2,13 @@
 <resources>
     <string name="app_name">FourteenCoffeeApp</string>
     <string name="number_app_name">14 Coffee</string>
-    <string name="order">pesan</string>
-    <string name="history">riwayat</string>
-    <string name="address">alamat</string>
-    <string name="checkout">bayar</string>
-    <string name="add_address">tambah alamat</string>
-    <string name="back">kembali</string>
-    <string name="add">tambah</string>
+    <string name="order">Pesan</string>
+    <string name="history">Riwayat</string>
+    <string name="address">Alamat</string>
+    <string name="checkout">Bayar</string>
+    <string name="add_address">Tambah Alamat</string>
+    <string name="back">Kembali</string>
+    <string name="add">Tambah</string>
     <string name="new_address">Alamat Baru</string>
     <string name="input_address_success">Berhasil Memasukan Alamat!</string>
     <string name="input_address_failed">Alamat Sudah Ada!</string>

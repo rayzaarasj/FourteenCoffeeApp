@@ -6,18 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
@@ -54,8 +53,6 @@ public class AddressFragment extends Fragment {
                         .replace(R.id.address_container, AddAddressFragment.newInstance())
                         .addToBackStack(null)
                         .commit();
-//                addressViewModel.deleteAll();
-
             }
         });
 
@@ -75,6 +72,14 @@ public class AddressFragment extends Fragment {
                 RecyclerView addressRecyclerView = getView().findViewById(R.id.address_recycler_view);
                 addressRecyclerView.setAdapter(addressAdapter);
                 addressRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+        });
+
+        ImageView addressBackImage = getView().findViewById(R.id.address_back_image);
+        addressBackImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
             }
         });
     }
