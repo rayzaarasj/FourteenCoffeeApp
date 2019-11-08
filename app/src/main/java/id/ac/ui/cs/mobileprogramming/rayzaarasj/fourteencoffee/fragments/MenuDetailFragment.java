@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
@@ -73,6 +75,9 @@ public class MenuDetailFragment extends Fragment {
 
                 TextView menuDetailCount = getView().findViewById(R.id.menu_detail_count);
                 menuDetailCount.setText("" + activeCart.getCount());
+
+                ImageView menuDetailImage = getView().findViewById(R.id.menu_detail_image);
+                Picasso.get().load(activeCart.getMenu().getImageUrl()).into(menuDetailImage);
             }
         });
     }
