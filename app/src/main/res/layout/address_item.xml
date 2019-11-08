@@ -13,6 +13,6 @@
         android:text="Taman Melati Margonda Unit A1426"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
 </LinearLayout>
