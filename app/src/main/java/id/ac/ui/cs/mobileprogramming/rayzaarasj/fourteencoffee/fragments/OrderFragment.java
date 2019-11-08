@@ -64,7 +64,7 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
                 Log.d("DEBUGGER", "cart " + cartList);
 
                 Log.d("DEBUGGER", "kereset");
-                if (cartList == null) {
+                if (cartList == null || cartList.size() != menus.size()) {
                     cartList = new ArrayList<>();
                     for (Menu menu : menuViewModel.menus) {
                         cartList.add(new Cart(menu, 0));
@@ -106,9 +106,10 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                List<Cart> cartList = menuViewModel.carts.getValue();
-//                cartList.get(0).setCount(1);
-//                menuViewModel.carts.setValue(cartList);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.order_container, CheckoutFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -149,7 +150,7 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
 
     @Override
     public void onItemClick(View view, Cart cart) {
-        Toast.makeText(getContext(), "You clicked" + menuViewModel.carts.getValue().indexOf(cart), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "You clicked" + menuViewModel.carts.getValue().indexOf(cart), Toast.LENGTH_SHORT).show();
         menuViewModel.activeDetailIndex = menuViewModel.carts.getValue().indexOf(cart);
         getFragmentManager().beginTransaction()
                 .replace(R.id.order_container, MenuDetailFragment.newInstance())

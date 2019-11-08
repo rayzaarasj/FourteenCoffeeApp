@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.CartAdapter;
@@ -40,5 +41,15 @@ public class MenuViewModel extends AndroidViewModel {
 
     public void deleteAll() {
         menuRepository.deleteAll();
+    }
+
+    public List<Cart> getNonEmptyCart() {
+        List<Cart> cartList = new ArrayList<>();
+        for (Cart cart : carts.getValue()) {
+            if (cart.getCount() != 0) {
+                cartList.add(cart);
+            }
+        }
+        return cartList;
     }
 }
