@@ -6,4 +6,9 @@
     <string name="address">Address</string>
     <string name="checkout">checkout</string>
     <string name="add_address">add address</string>
+    <string name="back">back</string>
+    <string name="add">add</string>
+    <string name="new_address">New Address</string>
+    <string name="input_address_success">Input Address Success!</string>
+    <string name="input_address_failed">Address Already Exists</string>
 </resources>

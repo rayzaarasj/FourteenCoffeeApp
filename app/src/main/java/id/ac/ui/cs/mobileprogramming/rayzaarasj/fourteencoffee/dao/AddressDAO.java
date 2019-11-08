@@ -13,11 +13,11 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Address;
 public interface AddressDAO {
 
     @Insert
-    void insert(Address address);
+    Long insert(Address address);
 
-    @Query("SELECT * from entities")
+    @Query("SELECT * from addresses")
     LiveData<List<Address>> getAllAddress();
 
-    @Query("DELETE from entities")
+    @Query("DELETE from addresses")
     void deleteAll();
 }
