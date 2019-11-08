@@ -57,6 +57,7 @@ public class MenuRepository {
         @Override
         protected Void doInBackground(Menu... menus) {
             menuDao.deleteAll();
+            Log.d("DEBUGGER", "done deleting menu");
             return null;
         }
     }

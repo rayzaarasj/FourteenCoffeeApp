@@ -13,9 +13,12 @@ public class Menu {
 
     private int price;
 
-    public Menu(@NonNull String name, int price) {
+    private String imageUrl;
+
+    public Menu(@NonNull String name, int price, String imageUrl) {
         this.name = name;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
 
     @NonNull
@@ -33,5 +36,13 @@ public class Menu {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
