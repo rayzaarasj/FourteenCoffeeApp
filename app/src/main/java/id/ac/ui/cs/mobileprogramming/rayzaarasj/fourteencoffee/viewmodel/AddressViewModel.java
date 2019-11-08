@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.AddressRepository;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.AddressRepository;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Address;
 
 public class AddressViewModel extends AndroidViewModel {
