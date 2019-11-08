@@ -27,4 +27,14 @@ public class Cart {
     public void setCount(int count) {
         this.count = count;
     }
+
+    public void add() {
+        this.count += 1;
+    }
+
+    public void minus() {
+        if (this.count > 0) {
+            this.count -= 1;
+        }
+    }
 }

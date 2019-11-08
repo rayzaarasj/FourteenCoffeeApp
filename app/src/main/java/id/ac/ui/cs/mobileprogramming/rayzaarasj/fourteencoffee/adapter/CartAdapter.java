@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -16,9 +17,14 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.pojo.Cart;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
     List<Cart> cartList;
+    private OnItemClickListener clickListener;
 
     public void setCartList(List<Cart> cartList) {
         this.cartList = cartList;
+    }
+
+    public void setClickListener(OnItemClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -35,6 +41,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cartMenuName.setText(cart.getMenu().getName());
         holder.cartMenuPrice.setText("" + cart.getMenu().getPrice() + " IDR");
         holder.cartCount.setText("" + cart.getCount());
+        holder.bind(cart, this.clickListener);
     }
 
     @Override
@@ -46,12 +53,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         private final TextView cartMenuName;
         private final TextView cartMenuPrice;
         private final TextView cartCount;
+        private final CardView cardView;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
             cartMenuName = itemView.findViewById(R.id.order_item_name);
             cartMenuPrice = itemView.findViewById(R.id.order_item_price);
             cartCount = itemView.findViewById(R.id.order_item_count);
+            cardView = itemView.findViewById(R.id.order_item);
         }
+
+        void bind(final Cart cart, final OnItemClickListener clickListener) {
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (clickListener != null) {
+                        clickListener.onItemClick(view, cart);
+                    }
+                }
+            });
+        }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, Cart cart);
     }
 }

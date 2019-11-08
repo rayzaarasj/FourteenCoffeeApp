@@ -9,12 +9,15 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.CartAdapter;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Menu;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.pojo.Cart;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.MenuRepository;
 
 public class MenuViewModel extends AndroidViewModel {
 
+    public int activeDetailIndex;
+    public CartAdapter cartAdapter = new CartAdapter();
     public List<Menu> menus;
     public MutableLiveData<List<Cart>> carts = new MutableLiveData<>();
 

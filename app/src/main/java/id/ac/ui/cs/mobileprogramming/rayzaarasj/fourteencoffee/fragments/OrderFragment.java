@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +35,7 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Menu;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.pojo.Cart;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.viewmodel.MenuViewModel;
 
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment implements CartAdapter.OnItemClickListener {
 
     private MenuViewModel menuViewModel;
 
@@ -54,18 +55,24 @@ public class OrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         menuViewModel = ViewModelProviders.of(getActivity()).get(MenuViewModel.class);
+        menuViewModel.cartAdapter.setClickListener(this);
         menuViewModel.getAllMenus().observe(this, new Observer<List<Menu>>() {
             @Override
             public void onChanged(List<Menu> menus) {
                 menuViewModel.menus = menus;
+                List<Cart> cartList = menuViewModel.carts.getValue();
+                Log.d("DEBUGGER", "cart " + cartList);
 
-                List<Cart> cartList = new ArrayList<>();
-                for (Menu menu : menuViewModel.menus) {
-                    cartList.add(new Cart(menu, 0));
+                Log.d("DEBUGGER", "kereset");
+                if (cartList == null) {
+                    cartList = new ArrayList<>();
+                    for (Menu menu : menuViewModel.menus) {
+                        cartList.add(new Cart(menu, 0));
+                    }
                 }
                 menuViewModel.carts.setValue(cartList);
 
-                CartAdapter cartAdapter = new CartAdapter();
+                CartAdapter cartAdapter = menuViewModel.cartAdapter;
                 Log.d("DEBUGGER", "" + menuViewModel.carts.getValue());
                 cartAdapter.setCartList(menuViewModel.carts.getValue());
                 RecyclerView cartRecyclerView = getView().findViewById(R.id.order_recycler_view);
@@ -73,11 +80,12 @@ public class OrderFragment extends Fragment {
                 cartRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
-//
+
         menuViewModel.carts.observe(this, new Observer<List<Cart>>() {
             @Override
             public void onChanged(List<Cart> carts) {
-                CartAdapter cartAdapter = new CartAdapter();
+                Log.d("DEBUGGER", "carts update");
+                CartAdapter cartAdapter = menuViewModel.cartAdapter;
                 Log.d("DEBUGGER", "" + menuViewModel.carts.getValue());
                 cartAdapter.setCartList(menuViewModel.carts.getValue());
                 RecyclerView cartRecyclerView = getView().findViewById(R.id.order_recycler_view);
@@ -98,9 +106,9 @@ public class OrderFragment extends Fragment {
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Cart> cartList = menuViewModel.carts.getValue();
-                cartList.get(0).setCount(1);
-                menuViewModel.carts.setValue(cartList);
+//                List<Cart> cartList = menuViewModel.carts.getValue();
+//                cartList.get(0).setCount(1);
+//                menuViewModel.carts.setValue(cartList);
             }
         });
 
@@ -137,5 +145,15 @@ public class OrderFragment extends Fragment {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+    }
+
+    @Override
+    public void onItemClick(View view, Cart cart) {
+        Toast.makeText(getContext(), "You clicked" + menuViewModel.carts.getValue().indexOf(cart), Toast.LENGTH_SHORT).show();
+        menuViewModel.activeDetailIndex = menuViewModel.carts.getValue().indexOf(cart);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.order_container, MenuDetailFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
     }
 }
