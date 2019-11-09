@@ -16,4 +16,6 @@
     <string name="total">Total Harga</string>
     <string name="done">Done</string>
     <string name="process">Process</string>
+    <string name="receipt">Receipt</string>
+    <string name="status">Status</string>
 </resources>

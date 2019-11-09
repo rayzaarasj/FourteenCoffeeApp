@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -14,7 +15,9 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.OrderR
 
 public class OrderViewModel extends AndroidViewModel {
 
+    public int activeOrderDetailIndex;
     public HistoryAdapter historyAdapter = new HistoryAdapter();
+    public MutableLiveData<List<Order>> orders = new MutableLiveData<>();
 
     private OrderRepository orderRepository;
     private LiveData<List<Order>> orderListData;
