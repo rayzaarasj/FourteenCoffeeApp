@@ -82,7 +82,6 @@ public class AddAddressFragment extends Fragment {
         addressViewModel.addressLiveData.observe(this, new Observer<Address>() {
             @Override
             public void onChanged(Address address) {
-                Log.d("DEBUGGER", "masukin");
                 if (address != null) {
                     getActivity().onBackPressed();
                     Toast.makeText(getActivity(), R.string.input_address_success, Toast.LENGTH_SHORT).show();

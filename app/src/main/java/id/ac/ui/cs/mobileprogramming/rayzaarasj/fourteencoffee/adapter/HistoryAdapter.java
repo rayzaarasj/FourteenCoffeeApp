@@ -38,7 +38,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
         Order order = orderList.get(position);
-        holder.historyItemDate.setText("Order on " + order.getDate());
+        holder.historyItemDate.setText(R.string.order_on);
+        holder.historyItemDate.setText(holder.historyItemDate.getText() + " " + order.getDate());
         holder.historyItemTotalPrice.setText("" + order.getTotalPrice() + " IDR");
         holder.historyItemStatus.setText((order.isDone()) ? R.string.done : R.string.process);
         holder.bind(order, this.clickListener);
