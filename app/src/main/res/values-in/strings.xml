@@ -14,4 +14,6 @@
     <string name="input_address_failed">Alamat Sudah Ada!</string>
     <string name="choose_address">Silakan Pilih Alamat</string>
     <string name="total">Total Harga</string>
+    <string name="done">Done</string>
+    <string name="process">Process</string>
 </resources>

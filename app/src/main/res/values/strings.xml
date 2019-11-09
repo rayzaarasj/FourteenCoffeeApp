@@ -13,4 +13,6 @@
     <string name="input_address_failed">Address Already Exists!</string>
     <string name="choose_address">Please Choose Address</string>
     <string name="total">Total Price</string>
+    <string name="done">Done</string>
+    <string name="process">Process</string>
 </resources>

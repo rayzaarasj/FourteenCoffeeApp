@@ -8,10 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.HistoryAdapter;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Order;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.OrderRepository;
 
 public class OrderViewModel extends AndroidViewModel {
+
+    public HistoryAdapter historyAdapter = new HistoryAdapter();
 
     private OrderRepository orderRepository;
     private LiveData<List<Order>> orderListData;

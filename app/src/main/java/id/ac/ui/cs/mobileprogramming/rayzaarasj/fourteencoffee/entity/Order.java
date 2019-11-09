@@ -77,4 +77,24 @@ public class Order {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+    public int getTotalPrice() {
+        String[] prices = this.prices.split(";");
+        int[] pricesInt = new int[prices.length];
+        for (int i = 0; i < prices.length; i++) {
+            pricesInt[i] = Integer.parseInt(prices[i]);
+        }
+
+        String[] counts = this.counts.split(";");
+        int[] countsInt = new int[counts.length];
+        for (int i = 0; i < counts.length; i++) {
+            countsInt[i] = Integer.parseInt(counts[i]);
+        }
+
+        int sum = 0;
+        for (int i = 0; i < pricesInt.length; i++) {
+            sum += (pricesInt[i] * countsInt[i]);
+        }
+        return sum;
+    }
 }
