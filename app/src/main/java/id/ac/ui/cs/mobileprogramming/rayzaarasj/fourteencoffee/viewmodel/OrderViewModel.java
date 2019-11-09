@@ -17,7 +17,6 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.OrderR
 
 public class OrderViewModel extends AndroidViewModel {
 
-    public MutableLiveData<Order> coffeeDoneOrder = new MutableLiveData<>();
     public int activeOrderDetailIndex;
     public HistoryAdapter historyAdapter = new HistoryAdapter();
     public MutableLiveData<List<Order>> orders = new MutableLiveData<>();

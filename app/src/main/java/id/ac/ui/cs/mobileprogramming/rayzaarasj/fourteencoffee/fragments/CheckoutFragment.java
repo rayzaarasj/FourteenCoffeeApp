@@ -116,7 +116,7 @@ public class CheckoutFragment extends Fragment {
                 orderViewModel.orders.setValue(orders);
             }
         });
-        
+
         final Button order = getView().findViewById(R.id.checkout_button);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
