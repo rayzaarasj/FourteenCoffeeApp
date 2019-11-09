@@ -49,32 +49,9 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnItemCl
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
-                //TODO: ini cara udpate order status
-//                Order order = orderViewModel.orders.getValue().get(0);
-//                order.setDone(true);
-//                orderViewModel.updateOrder(order);
             }
         });
 
-//        orderViewModel.deleteAll();
-//        orderViewModel.insert(new Order(
-//                1,
-//                "14-10-2019",
-//                "A;B;C",
-//                "10;20;30",
-//                "1;2;3",
-//                "Taman Melati Maegonda A1426",
-//                false
-//        ));
-//        orderViewModel.insert(new Order(
-//                2,
-//                "15-10-2019",
-//                "A;B;C;D",
-//                "10;20;30;40",
-//                "1;2;3;4",
-//                "Taman Melati Maegonda A1427",
-//                false
-//        ));
         orderViewModel.getAllOrders().observe(this, new Observer<List<Order>>() {
             @Override
             public void onChanged(List<Order> orders) {

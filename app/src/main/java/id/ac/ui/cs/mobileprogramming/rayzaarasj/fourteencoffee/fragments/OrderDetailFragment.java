@@ -1,21 +1,41 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,7 +64,7 @@ public class OrderDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         orderViewModel = ViewModelProviders.of(getActivity()).get(OrderViewModel.class);
-        Order activeOrder = orderViewModel.orders.getValue().get(orderViewModel.activeOrderDetailIndex);
+        final Order activeOrder = orderViewModel.orders.getValue().get(orderViewModel.activeOrderDetailIndex);
         List<Cart> activeOrderCart = activeOrder.getOrderCarts();
 
         Log.d("DEBUGGER", "activeOrderCart" + activeOrderCart);
@@ -76,10 +96,98 @@ public class OrderDetailFragment extends Fragment {
         receiptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Order order = orderViewModel.orders.getValue().get(orderViewModel.activeOrderDetailIndex);
-//                order.setDone(true);
-//                orderViewModel.updateOrder(order);
+                Toast.makeText(getActivity(), R.string.unavailable, Toast.LENGTH_SHORT).show();
+//                failed attempt on FileProvider
+//                Document doc = new Document();
+//                String path = "";
+//
+//                try {
+//                    path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dir";
+//
+//                    File dir = new File(path);
+//                    if(!dir.exists())
+//                        dir.mkdirs();
+//
+//                    File file = new File(dir, "newFile.pdf");
+//                    FileOutputStream fOut = new FileOutputStream(file);
+//
+//                    PdfWriter.getInstance(doc, fOut);
+//
+//                    //open the document
+//                    doc.open();
+//
+//                    Paragraph p1 = new Paragraph(activeOrder.getDate());
+//                    Font paraFont= new Font(Font.FontFamily.COURIER);
+//                    p1.setAlignment(Paragraph.ALIGN_CENTER);
+//                    p1.setFont(paraFont);
+//
+//                    //add paragraph to document
+//                    doc.add(p1);
+//
+//                } catch (DocumentException de) {
+//                    Log.e("PDFCreator", "DocumentException:" + de);
+//                } catch (IOException e) {
+//                    Log.e("PDFCreator", "ioException:" + e);
+//                }
+//                finally {
+//                    doc.close();
+//                }
+//
+//                File pdfFile = new File(path);
+//                Uri uri = Uri.fromFile(pdfFile);
+//
+//                // Setting the intent for pdf reader
+//                Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+//                pdfIntent.setDataAndType(uri, "application/pdf");
+//                pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//                try {
+//                    startActivity(pdfIntent);
+//                } catch (ActivityNotFoundException e) {
+//                    Toast.makeText(getActivity(), "Can't read pdf file", Toast.LENGTH_SHORT).show();
+//                }
             }
+//                Order activeOrder = orderViewModel.orders.getValue().get(orderViewModel.activeOrderDetailIndex);
+//                PdfDocument document = new PdfDocument();
+//                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+//                PdfDocument.Page page = document.startPage(pageInfo);
+//                Canvas canvas = page.getCanvas();
+//                Paint paint = new Paint();
+//                paint.setColor(Color.BLACK);
+//                canvas.drawText(activeOrder.getDate(), 80, 50, paint);
+//                document.finishPage(page);
+//
+//                String directory_path = getContext().getFilesDir() + "/mypdf/";
+//                File file = new File(directory_path);
+//                if (!file.exists()) {
+//                    file.mkdirs();
+//                }
+//                String targetPdf = directory_path + activeOrder.getDate() + " " + activeOrder.getId() + ".pdf";
+//                File filePath = new File(targetPdf);
+//                try {
+//                    document.writeTo(getContext().openFileOutput(filePath.getName(), Context.MODE_PRIVATE));
+//                    Toast.makeText(getActivity(), "Done", Toast.LENGTH_LONG).show();
+//
+//                    File pdfFile = new File(targetPdf);
+//                    Uri path = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getPackageName()+".provider", pdfFile);
+//
+//                    // Setting the intent for pdf reader
+//                    Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+//                    pdfIntent.setDataAndType(path, "application/pdf");
+//                    pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//                    try {
+//                        startActivity(pdfIntent);
+//                    } catch (ActivityNotFoundException e) {
+//                        Toast.makeText(getActivity(), "Can't read pdf file", Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (IOException e) {
+//                    Log.e("main", "error "+e.toString());
+//                    Toast.makeText(getActivity(), "Something wrong: " + e.toString(),  Toast.LENGTH_LONG).show();
+//                }
+//                // close the document
+//                document.close();
+//            }
         });
 
         Button backButton = getView().findViewById(R.id.order_detail_back_button);
