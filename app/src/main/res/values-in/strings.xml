@@ -19,4 +19,7 @@
     <string name="receipt">Struk</string>
     <string name="status">Status</string>
     <string name="order_refresed">Menu Diupdate!</string>
+    <string name="cart_empty">Keranjang Kosong!</string>
+    <string name="address_empty">Alamat Kosong!</string>
+    <string name="coffee_done">Kopi Jadi!</string>
 </resources>

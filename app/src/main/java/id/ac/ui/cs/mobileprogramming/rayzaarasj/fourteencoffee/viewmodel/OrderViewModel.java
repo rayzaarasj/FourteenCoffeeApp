@@ -1,6 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.viewmodel;
 
 import android.app.Application;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,12 +10,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.CoffeeDoneReceiver;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.HistoryAdapter;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Order;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.OrderRepository;
 
 public class OrderViewModel extends AndroidViewModel {
 
+    public MutableLiveData<Order> coffeeDoneOrder = new MutableLiveData<>();
     public int activeOrderDetailIndex;
     public HistoryAdapter historyAdapter = new HistoryAdapter();
     public MutableLiveData<List<Order>> orders = new MutableLiveData<>();
@@ -46,5 +49,8 @@ public class OrderViewModel extends AndroidViewModel {
 
     public void updateOrder(Order order) {
         orderRepository.updateOrder(order);
+        Intent coffeeDoneIntent = new Intent("COFFEE_DONE");
+        coffeeDoneIntent.setClass(getApplication(), CoffeeDoneReceiver.class);
+        getApplication().sendBroadcast(coffeeDoneIntent);
     }
 }

@@ -56,25 +56,25 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnItemCl
             }
         });
 
-        orderViewModel.deleteAll();
-        orderViewModel.insert(new Order(
-                1,
-                "14-10-2019",
-                "A;B;C",
-                "10;20;30",
-                "1;2;3",
-                "Taman Melati Maegonda A1426",
-                false
-        ));
-        orderViewModel.insert(new Order(
-                2,
-                "15-10-2019",
-                "A;B;C;D",
-                "10;20;30;40",
-                "1;2;3;4",
-                "Taman Melati Maegonda A1427",
-                false
-        ));
+//        orderViewModel.deleteAll();
+//        orderViewModel.insert(new Order(
+//                1,
+//                "14-10-2019",
+//                "A;B;C",
+//                "10;20;30",
+//                "1;2;3",
+//                "Taman Melati Maegonda A1426",
+//                false
+//        ));
+//        orderViewModel.insert(new Order(
+//                2,
+//                "15-10-2019",
+//                "A;B;C;D",
+//                "10;20;30;40",
+//                "1;2;3;4",
+//                "Taman Melati Maegonda A1427",
+//                false
+//        ));
         orderViewModel.getAllOrders().observe(this, new Observer<List<Order>>() {
             @Override
             public void onChanged(List<Order> orders) {
