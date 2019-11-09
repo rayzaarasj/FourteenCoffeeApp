@@ -1,11 +1,9 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +48,6 @@ public class ChooseAddressFragment extends Fragment implements ChooseAddressAdap
             @Override
             public void onChanged(List<Address> addresses) {
                 ChooseAddressAdapter chooseAddressAdapter = addressViewModel.chooseAddressAdapter;
-                Log.d("data", "Data size:" + addresses.size());
                 chooseAddressAdapter.setAddressList(addresses);
                 RecyclerView addressRecyclerView = getView().findViewById(R.id.choose_address_recycler_view);
                 addressRecyclerView.setAdapter(chooseAddressAdapter);

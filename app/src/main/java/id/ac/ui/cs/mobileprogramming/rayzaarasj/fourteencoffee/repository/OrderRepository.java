@@ -2,8 +2,6 @@ package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -43,8 +41,6 @@ public class OrderRepository {
         @Override
         protected Void doInBackground(Order... orders) {
             orderDAO.insert(orders[0]);
-            Log.d("DEBUGGER", "done inserting order");
-            // TODO : jalanin async task yang bakal update status order
             return null;
         }
     }
@@ -63,7 +59,6 @@ public class OrderRepository {
         @Override
         protected Void doInBackground(Order... orders) {
             orderDAO.deleteAll();
-            Log.d("DEBUGGER", "done deleting order");
             return null;
         }
     }
@@ -82,7 +77,6 @@ public class OrderRepository {
         @Override
         protected Void doInBackground(Order... orders) {
             orderDAO.updateOrder(orders[0]);
-            Log.d("DEBUGGER", "done update order " + orders[0].getId());
             return null;
         }
     }

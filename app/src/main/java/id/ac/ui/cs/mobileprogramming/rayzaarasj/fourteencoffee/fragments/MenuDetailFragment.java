@@ -1,7 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +63,6 @@ public class MenuDetailFragment extends Fragment {
         menuViewModel.carts.observe(this, new Observer<List<Cart>>() {
             @Override
             public void onChanged(List<Cart> carts) {
-                Log.d("DEBUGGER", "carts update");
                 Cart activeCart = menuViewModel.carts.getValue().get(menuViewModel.activeDetailIndex);
 
                 TextView menuDetailName = getView().findViewById(R.id.menu_detail_name);

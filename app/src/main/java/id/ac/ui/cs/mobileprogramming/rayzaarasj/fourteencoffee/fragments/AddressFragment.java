@@ -1,13 +1,11 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,18 +54,10 @@ public class AddressFragment extends Fragment {
             }
         });
 
-//        List<Address> temp = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            temp.add(new Address("Taman Melati Margonda Unit A142" + i));
-//        }
-
-//        addressViewModel.deleteAll();
-//        addressViewModel.insert(new Address("Taman Melati Margonda Unit A1426"));
         addressViewModel.getAllAddress().observe(this, new Observer<List<Address>>() {
             @Override
             public void onChanged(List<Address> addresses) {
                 AddressAdapter addressAdapter = new AddressAdapter();
-                Log.d("data", "Data size:" + addresses.size());
                 addressAdapter.setAddressList(addresses);
                 RecyclerView addressRecyclerView = getView().findViewById(R.id.address_recycler_view);
                 addressRecyclerView.setAdapter(addressAdapter);

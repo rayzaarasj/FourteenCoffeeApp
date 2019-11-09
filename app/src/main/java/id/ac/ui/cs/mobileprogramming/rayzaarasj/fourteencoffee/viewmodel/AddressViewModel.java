@@ -1,7 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -11,8 +10,8 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.ChooseAddressAdapter;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.AddressRepository;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Address;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.AddressRepository;
 
 public class AddressViewModel extends AndroidViewModel {
 
@@ -30,7 +29,6 @@ public class AddressViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Address>> getAllAddress() {
-        Log.d("DEBUGGER", ""  + addressRepository.getAllAddresses().getValue());
         return addressListData;
     }
 

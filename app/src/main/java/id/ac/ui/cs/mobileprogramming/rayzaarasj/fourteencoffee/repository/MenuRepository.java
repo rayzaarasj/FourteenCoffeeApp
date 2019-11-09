@@ -2,7 +2,6 @@ package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -38,7 +37,6 @@ public class MenuRepository {
         @Override
         protected Void doInBackground(Menu... menus) {
             menuDao.insert(menus[0]);
-            Log.d("DEBUGGER", "done inserting menu");
             return null;
         }
     }
@@ -57,7 +55,6 @@ public class MenuRepository {
         @Override
         protected Void doInBackground(Menu... menus) {
             menuDao.deleteAll();
-            Log.d("DEBUGGER", "done deleting menu");
             return null;
         }
     }

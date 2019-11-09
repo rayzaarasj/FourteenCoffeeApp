@@ -2,7 +2,6 @@ package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -21,7 +20,6 @@ public class AddressRepository {
     }
 
     public LiveData<List<Address>> getAllAddresses() {
-        Log.d("DEBUGGER", "" + addressDao.getAllAddress().getValue());
         return addressDao.getAllAddress();
     }
 
@@ -57,7 +55,6 @@ public class AddressRepository {
         @Override
         protected Void doInBackground(Address... addresses) {
             Long a = addressDao.insert(addresses[0]);
-            Log.d("DEBUGGER", "done inserting address");
             return null;
         }
     }

@@ -1,10 +1,8 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.amitshekhar.DebugDB;
+import androidx.appcompat.app.AppCompatActivity;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments.HomeFragment;
 

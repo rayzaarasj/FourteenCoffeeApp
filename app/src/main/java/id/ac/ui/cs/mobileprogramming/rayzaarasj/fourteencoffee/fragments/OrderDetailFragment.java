@@ -1,16 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.pdf.PdfDocument;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,23 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
@@ -67,7 +46,6 @@ public class OrderDetailFragment extends Fragment {
         final Order activeOrder = orderViewModel.orders.getValue().get(orderViewModel.activeOrderDetailIndex);
         List<Cart> activeOrderCart = activeOrder.getOrderCarts();
 
-        Log.d("DEBUGGER", "activeOrderCart" + activeOrderCart);
         CheckoutAdapter checkoutAdapter = new CheckoutAdapter();
         checkoutAdapter.setCartList(activeOrderCart);
         RecyclerView orderDetailRecyclerView = getView().findViewById(R.id.order_detail_recycler_view);

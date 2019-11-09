@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.AddressActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HistoryActivity;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HomeActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.OrderActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 

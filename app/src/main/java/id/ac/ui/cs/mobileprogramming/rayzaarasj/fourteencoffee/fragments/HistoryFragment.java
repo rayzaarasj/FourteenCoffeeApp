@@ -1,12 +1,10 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,9 +53,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnItemCl
         orderViewModel.getAllOrders().observe(this, new Observer<List<Order>>() {
             @Override
             public void onChanged(List<Order> orders) {
-                if (orders.size() > 0) {
-                    Log.d("DEBUGGER", "" + orders.get(0).getTotalPrice());
-                }
                 orderViewModel.orders.setValue(orders);
                 HistoryAdapter historyAdapter = orderViewModel.historyAdapter;
                 historyAdapter.setOrderList(orders);

@@ -1,7 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +60,6 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
             public void onChanged(List<Menu> menus) {
                 menuViewModel.menus = menus;
                 List<Cart> cartList = menuViewModel.carts.getValue();
-                Log.d("DEBUGGER", "cart " + cartList);
-
-                Log.d("DEBUGGER", "kereset");
                 if (cartList == null || cartList.size() != menus.size()) {
                     cartList = new ArrayList<>();
                     for (Menu menu : menuViewModel.menus) {
@@ -73,7 +69,6 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
                 menuViewModel.carts.setValue(cartList);
 
                 CartAdapter cartAdapter = menuViewModel.cartAdapter;
-                Log.d("DEBUGGER", "" + menuViewModel.carts.getValue());
                 cartAdapter.setCartList(menuViewModel.carts.getValue());
                 RecyclerView cartRecyclerView = getView().findViewById(R.id.order_recycler_view);
                 cartRecyclerView.setAdapter(cartAdapter);
@@ -84,9 +79,7 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
         menuViewModel.carts.observe(this, new Observer<List<Cart>>() {
             @Override
             public void onChanged(List<Cart> carts) {
-                Log.d("DEBUGGER", "carts update");
                 CartAdapter cartAdapter = menuViewModel.cartAdapter;
-                Log.d("DEBUGGER", "" + menuViewModel.carts.getValue());
                 cartAdapter.setCartList(menuViewModel.carts.getValue());
                 RecyclerView cartRecyclerView = getView().findViewById(R.id.order_recycler_view);
                 cartRecyclerView.setAdapter(cartAdapter);
@@ -118,14 +111,7 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.d("DEBUGGER", "---------------- this is response : " + response);
                 try {
-                    Log.d("DEBUGGER", " " + menuViewModel.menus.size());
-                    Log.d("DEBUGGER", " this is response : " + response.getJSONObject((0)));
-                    Log.d("DEBUGGER", " this is response : " + response.getJSONObject((0)).getString("pk"));
-                    Log.d("DEBUGGER", " this is response : " + response.getJSONObject((0)).getJSONObject("fields"));
-                    Log.d("DEBUGGER", " this is response : " + response.getJSONObject((0)).getJSONObject("fields").getInt("price"));
-                    Log.d("DEBUGGER", " this is response : " + response.getJSONObject((0)).getJSONObject("fields").getString("image_url"));
                     if (menuViewModel.menus.size() != response.length()) {
                         menuViewModel.deleteAll();
                         for (int i = 0; i < response.length(); i++) {

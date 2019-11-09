@@ -1,12 +1,8 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,16 +24,13 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.ApiUtils;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.CoffeeDoneReceiver;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HomeActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.CheckoutAdapter;
@@ -68,7 +60,6 @@ public class CheckoutFragment extends Fragment {
 
         menuViewModel = ViewModelProviders.of(getActivity()).get(MenuViewModel.class);
         orderViewModel = ViewModelProviders.of(getActivity()).get(OrderViewModel.class);
-        Log.d("DEBUGGER", "checkout" + menuViewModel.getNonEmptyCart().size());
 
         final List<Cart> nonEmptyCart = menuViewModel.getNonEmptyCart();
 
@@ -102,7 +93,6 @@ public class CheckoutFragment extends Fragment {
         chooseAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("DEBUGGER", "klik text");
                 getFragmentManager().beginTransaction()
                         .replace(R.id.order_container, ChooseAddressFragment.newInstance())
                         .addToBackStack(null)
@@ -145,13 +135,6 @@ public class CheckoutFragment extends Fragment {
                 counts = counts.substring(0, counts.length() - 1);
                 final int id = orderViewModel.orders.getValue().size() + 1;
 
-                Log.d("DEBUGGER", "" + id);
-                Log.d("DEBUGGER", date);
-                Log.d("DEBUGGER", menus);
-                Log.d("DEBUGGER", prices);
-                Log.d("DEBUGGER", counts);
-                Log.d("DEBUGGER", menuViewModel.address);
-
                 RequestParams requestParams = new RequestParams();
                 requestParams.put("key", id);
                 requestParams.put("menus", menus);
@@ -174,7 +157,6 @@ public class CheckoutFragment extends Fragment {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         super.onSuccess(statusCode, headers, response);
-                        Log.d("DEBUGGER", "posted");
                         orderViewModel.insert(order);
                         final Handler mainHandler = new Handler();
                         final Runnable myRunnable = new Runnable() {
@@ -189,12 +171,9 @@ public class CheckoutFragment extends Fragment {
                                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                                         super.onSuccess(statusCode, headers, response);
                                         try {
-                                            Log.d("DEBUGGER", "asynctask" + order.getId() + " " + response.getJSONObject(0).getJSONObject("fields").getBoolean("done"));
                                             if (response.getJSONObject(0).getJSONObject("fields").getBoolean("done")) {
                                                 order.setDone(true);
                                                 orderViewModel.updateOrder(order);
-                                                Log.d("DEBUGGER", "done asynctask");
-//                                                orderViewModel.coffeeDoneOrder.setValue(order);
                                                 done[0] = true;
                                             }
                                         } catch (JSONException e) {
