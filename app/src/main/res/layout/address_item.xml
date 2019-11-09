@@ -3,16 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/address_item_text"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/address_item_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/cardBackground"
-        android:padding="10dp"
-        android:text="Taman Melati Margonda Unit A1426"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="24sp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/address_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/cardBackground"
+            android:padding="10dp"
+            android:text="Taman Melati Margonda Unit A1426"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

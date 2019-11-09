@@ -21,6 +21,7 @@ public class MenuViewModel extends AndroidViewModel {
     public CartAdapter cartAdapter = new CartAdapter();
     public List<Menu> menus;
     public MutableLiveData<List<Cart>> carts = new MutableLiveData<>();
+    public String address;
 
     private MenuRepository menuRepository;
     private LiveData<List<Menu>> menuListData;

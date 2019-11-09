@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.loopj.android.http.RequestParams;
 
 import java.util.List;
 
@@ -58,11 +62,37 @@ public class CheckoutFragment extends Fragment {
         }
         checkoutTotal.setText(checkoutTotal.getText() + " : " + total + " IDR");
 
+        if (menuViewModel.address != null) {
+            Button chooseAddress = getView().findViewById(R.id.checkout_address);
+            chooseAddress.setText(menuViewModel.address);
+        }
+
         ImageView checkoutBackImage = getView().findViewById(R.id.checkout_back_image);
         checkoutBackImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
+            }
+        });
+
+        Button chooseAddress = getView().findViewById(R.id.checkout_address);
+        chooseAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("DEBUGGER", "klik text");
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.order_container, ChooseAddressFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        Button order = getView().findViewById(R.id.checkout_button);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RequestParams requestParams = new RequestParams();
+                Toast.makeText(getContext(), "ORDER", Toast.LENGTH_SHORT).show();
             }
         });
     }

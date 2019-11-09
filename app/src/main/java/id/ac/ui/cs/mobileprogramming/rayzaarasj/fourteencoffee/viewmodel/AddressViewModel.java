@@ -10,12 +10,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.ChooseAddressAdapter;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.repository.AddressRepository;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Address;
 
 public class AddressViewModel extends AndroidViewModel {
 
     public List<Address> addresses;
+    public ChooseAddressAdapter chooseAddressAdapter = new ChooseAddressAdapter();
 
     private AddressRepository addressRepository;
     private LiveData<List<Address>> addressListData;
