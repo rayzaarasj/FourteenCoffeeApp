@@ -135,6 +135,7 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
                             String imageUrl = menuJSON.getJSONObject("fields").getString("image_url");
                             menuViewModel.insert(new Menu(name, price, imageUrl));
                         }
+                        Toast.makeText(getContext(), R.string.order_refresed, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

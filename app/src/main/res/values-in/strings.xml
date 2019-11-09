@@ -14,8 +14,9 @@
     <string name="input_address_failed">Alamat Sudah Ada!</string>
     <string name="choose_address">Silakan Pilih Alamat</string>
     <string name="total">Total Harga</string>
-    <string name="done">Done</string>
-    <string name="process">Process</string>
-    <string name="receipt">Receipt</string>
+    <string name="done">Selesai</string>
+    <string name="process">Proses</string>
+    <string name="receipt">Struk</string>
     <string name="status">Status</string>
+    <string name="order_refresed">Menu Diupdate!</string>
 </resources>
