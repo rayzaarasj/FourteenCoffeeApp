@@ -137,7 +137,6 @@ public class OrderFragment extends Fragment implements CartAdapter.OnItemClickLi
 
     @Override
     public void onItemClick(View view, Cart cart) {
-//        Toast.makeText(getContext(), "You clicked" + menuViewModel.carts.getValue().indexOf(cart), Toast.LENGTH_SHORT).show();
         menuViewModel.activeDetailIndex = menuViewModel.carts.getValue().indexOf(cart);
         getFragmentManager().beginTransaction()
                 .replace(R.id.order_container, MenuDetailFragment.newInstance())

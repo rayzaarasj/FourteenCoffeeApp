@@ -65,7 +65,6 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnItemCl
 
     @Override
     public void onItemClick(View view, Order order) {
-//        Toast.makeText(getContext(), "You clicked" + orderViewModel.orders.getValue().indexOf(order), Toast.LENGTH_SHORT).show();
         orderViewModel.activeOrderDetailIndex = orderViewModel.orders.getValue().indexOf(order);
         getFragmentManager().beginTransaction()
                 .replace(R.id.history_container, OrderDetailFragment.newInstance())
