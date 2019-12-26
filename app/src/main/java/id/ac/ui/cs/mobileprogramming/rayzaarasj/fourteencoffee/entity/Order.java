@@ -114,6 +114,26 @@ public class Order {
         return sum;
     }
 
+    public int[] getArrOrderDetail() {
+        String[] prices = this.prices.split(";");
+        int[] pricesInt = new int[prices.length];
+        for (int i = 0; i < prices.length; i++) {
+            pricesInt[i] = Integer.parseInt(prices[i]);
+        }
+
+        String[] counts = this.counts.split(";");
+        int[] countsInt = new int[counts.length];
+        for (int i = 0; i < counts.length; i++) {
+            countsInt[i] = Integer.parseInt(counts[i]);
+        }
+
+        int[] arrOrderDetail = new int[pricesInt.length];
+        for (int i = 0; i < pricesInt.length; i++) {
+            arrOrderDetail[i] = pricesInt[i] * countsInt[i];
+        }
+        return arrOrderDetail;
+    }
+
     public List<Cart> getOrderCarts() {
         String[] menus = this.menus.split(";");
 

@@ -26,6 +26,12 @@ import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.viewmodel.OrderVi
 
 public class OrderDetailFragment extends Fragment {
 
+    public native int sumIntArr(int[] arr);
+
+    static {
+        System.loadLibrary("fourteencoffee");
+    }
+
     private OrderViewModel orderViewModel;
 
     public static OrderDetailFragment newInstance() {
@@ -68,7 +74,8 @@ public class OrderDetailFragment extends Fragment {
         });
 
         TextView totalPriceText = getView().findViewById(R.id.order_detail_total_price);
-        totalPriceText.setText(totalPriceText.getText() + " : " + activeOrder.getTotalPrice());
+        int sum = sumIntArr(activeOrder.getArrOrderDetail());
+        totalPriceText.setText(totalPriceText.getText() + " : " + sum);
 
         Button receiptButton = getView().findViewById(R.id.order_detail_receipt_button);
         receiptButton.setOnClickListener(new View.OnClickListener() {
