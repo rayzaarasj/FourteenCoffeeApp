@@ -24,4 +24,5 @@
     <string name="coffee_done">Kopi Jadi!</string>
     <string name="unavailable">Tidak Tersedia</string>
     <string name="order_on">Pesanan pada</string>
+    <string name="coffee_done_detail">Pesanan kopi anda telah selesai! Kami berangkat!</string>
 </resources>

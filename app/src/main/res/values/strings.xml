@@ -23,4 +23,5 @@
     <string name="coffee_done">Coffee Done!</string>
     <string name="unavailable">Unavailable</string>
     <string name="order_on">Order on</string>
+    <string name="coffee_done_detail">Your coffee order is done! We are on the way!</string>
 </resources>
