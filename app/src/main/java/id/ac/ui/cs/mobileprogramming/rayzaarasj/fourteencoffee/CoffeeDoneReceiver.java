@@ -17,6 +17,7 @@ public class CoffeeDoneReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction() != null && intent.getAction().equalsIgnoreCase("COFFEE_DONE")) {
+            context.stopService(new Intent(context, CheckCoffeeService.class));
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
             String channelId = "FourteenCoffeeChannelId";

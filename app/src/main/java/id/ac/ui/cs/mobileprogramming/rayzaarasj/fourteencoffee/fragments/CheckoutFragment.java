@@ -3,6 +3,7 @@ package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.ApiUtils;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.CheckCoffeeService;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.HomeActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.CheckoutAdapter;
@@ -158,36 +160,14 @@ public class CheckoutFragment extends Fragment {
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         super.onSuccess(statusCode, headers, response);
                         orderViewModel.insert(order);
-                        final Handler mainHandler = new Handler();
-                        final Runnable myRunnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                final Runnable runnable = this;
-                                final boolean[] done = {false};
-                                RequestParams requestParams = new RequestParams();
-                                requestParams.put("key", order.getId());
-                                ApiUtils.get("order/get/", requestParams, new JsonHttpResponseHandler() {
-                                    @Override
-                                    public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                                        super.onSuccess(statusCode, headers, response);
-                                        try {
-                                            if (response.getJSONObject(0).getJSONObject("fields").getBoolean("done")) {
-                                                order.setDone(true);
-                                                orderViewModel.updateOrder(order);
-                                                done[0] = true;
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        } finally {
-                                            if (!done[0]) {
-                                                mainHandler.postDelayed(runnable, 1000L);
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                        };
-                        mainHandler.post(myRunnable);
+                        Intent serviceIntent = new Intent(getActivity(), CheckCoffeeService.class);
+                        serviceIntent.putExtra("orderId", order.getId());
+                        serviceIntent.putExtra("orderDate", order.getDate());
+                        serviceIntent.putExtra("orderMenus", order.getMenus());
+                        serviceIntent.putExtra("orderPrices", order.getPrices());
+                        serviceIntent.putExtra("orderCounts", order.getCounts());
+                        serviceIntent.putExtra("orderAddress", order.getAddress());
+                        getContext().startService(serviceIntent);
                     }
                 });
                 Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
