@@ -1,9 +1,10 @@
-package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee;
+package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments.HomeFragment;
 
 public class HomeActivity extends AppCompatActivity {

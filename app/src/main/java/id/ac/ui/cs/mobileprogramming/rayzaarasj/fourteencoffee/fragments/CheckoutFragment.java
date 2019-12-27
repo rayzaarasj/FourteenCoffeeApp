@@ -31,7 +31,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.ApiUtils;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HomeActivity;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.HomeActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.adapter.CheckoutAdapter;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.entity.Order;

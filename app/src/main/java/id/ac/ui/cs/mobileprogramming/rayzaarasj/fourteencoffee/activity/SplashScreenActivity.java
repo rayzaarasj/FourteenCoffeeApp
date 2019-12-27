@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee;
+package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.opengl.OpenGLSurfaceView;
 
 public class SplashScreenActivity extends AppCompatActivity {

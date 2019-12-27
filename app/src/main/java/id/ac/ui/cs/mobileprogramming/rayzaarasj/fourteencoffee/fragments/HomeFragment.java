@@ -15,9 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.AddressActivity;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.HistoryActivity;
-import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.OrderActivity;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.AddressActivity;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.HistoryActivity;
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.OrderActivity;
 import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.R;
 
 public class HomeFragment extends Fragment {

@@ -11,6 +11,8 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.activity.HistoryActivity;
+
 public class CoffeeDoneReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
