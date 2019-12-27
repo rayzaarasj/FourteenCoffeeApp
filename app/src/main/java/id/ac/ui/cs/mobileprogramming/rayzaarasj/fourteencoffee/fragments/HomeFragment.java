@@ -1,11 +1,15 @@
 package id.ac.ui.cs.mobileprogramming.rayzaarasj.fourteencoffee.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,9 +40,20 @@ public class HomeFragment extends Fragment {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent orderIntent = new Intent(getActivity(), OrderActivity.class);
-                getActivity().finish();
-                startActivity(orderIntent);
+                ConnectivityManager cm =
+                        (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                boolean isConnected = activeNetwork != null &&
+                        activeNetwork.isConnectedOrConnecting();
+
+                if (isConnected) {
+                    Intent orderIntent = new Intent(getActivity(), OrderActivity.class);
+                    getActivity().finish();
+                    startActivity(orderIntent);
+                } else {
+                    Toast.makeText(getContext(), R.string.not_connected_to_internet, Toast.LENGTH_LONG).show();
+                }
             }
         });
 

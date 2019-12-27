@@ -25,4 +25,5 @@
     <string name="unavailable">Tidak Tersedia</string>
     <string name="order_on">Pesanan pada</string>
     <string name="coffee_done_detail">Pesanan kopi anda telah selesai! Kami berangkat!</string>
+    <string name="not_connected_to_internet">Tolong sambungkan ke internet terlebih dahulu.</string>
 </resources>
