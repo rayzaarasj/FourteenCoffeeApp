@@ -25,4 +25,8 @@
     <string name="order_on">Order on</string>
     <string name="coffee_done_detail">Your coffee order is done! We are on the way!</string>
     <string name="not_connected_to_internet">Please connect to the internet first.</string>
+    <string name="input_address_empty">Address can\'t be empty!</string>
+    <string name="use_current_long_lat">Use current Longitude and Latitude</string>
+    <string name="permission_reason">We need this permission to save your longitude and latitude as a new address.</string>
+    <string name="cancel">Cancel</string>
 </resources>

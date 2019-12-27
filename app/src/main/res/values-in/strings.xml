@@ -26,4 +26,8 @@
     <string name="order_on">Pesanan pada</string>
     <string name="coffee_done_detail">Pesanan kopi anda telah selesai! Kami berangkat!</string>
     <string name="not_connected_to_internet">Tolong sambungkan ke internet terlebih dahulu.</string>
+    <string name="input_address_empty">Alamat tidak boleh kosong!</string>
+    <string name="use_current_long_lat">Gunakan Longitude dan Latitude saat ini</string>
+    <string name="permission_reason">Kami membutuhkan izin ini untuk menyimpan longitude dan latitude anda sebagai alamat yang baru.</string>
+    <string name="cancel">Batal</string>
 </resources>
