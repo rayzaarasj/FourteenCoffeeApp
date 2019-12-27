@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -59,7 +60,7 @@ public class CheckoutFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        final FragmentActivity activity = getActivity();
         menuViewModel = ViewModelProviders.of(getActivity()).get(MenuViewModel.class);
         orderViewModel = ViewModelProviders.of(getActivity()).get(OrderViewModel.class);
 
@@ -160,7 +161,7 @@ public class CheckoutFragment extends Fragment {
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         super.onSuccess(statusCode, headers, response);
                         orderViewModel.insert(order);
-                        Intent serviceIntent = new Intent(getActivity(), CheckCoffeeService.class);
+                        Intent serviceIntent = new Intent(activity, CheckCoffeeService.class);
                         serviceIntent.putExtra("orderId", order.getId());
                         serviceIntent.putExtra("orderDate", order.getDate());
                         serviceIntent.putExtra("orderMenus", order.getMenus());
